@@ -1,0 +1,1 @@
+<?php include PATH . "partials/studentportal.php"?>
