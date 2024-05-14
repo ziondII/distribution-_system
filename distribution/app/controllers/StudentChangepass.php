@@ -1,11 +1,8 @@
 <?php
-
-class StudentChangepass extends Controller
+class StudentChangePass extends Controller
 {
     public function index()
     {    
-      
-
         $this->view('studentchangepass');
     }
     

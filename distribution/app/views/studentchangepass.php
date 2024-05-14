@@ -35,10 +35,13 @@
     </div>
     <div class="inputbox">
       <input type="text" name = "password" required="required">
-      <span>New Password</span>
+      <span>Old Password</span>
     </div>
     <div class="inputbox">
-      <input type="button" value="submit">
+      <input type="text" name = "password" required="required">
+      <span>New Password</span>
+    </div>
+    <button type="button" class="btn btn-outline-light">Save</button>
     </div>
   </form>
 </div>
