@@ -25,7 +25,7 @@
       <span>Password</span>
     </div>
     <div class="inputbox">
-     <a input type="button" value="login" href="<?= ROOT ?>/studentsched"> Log in </a>
+     <a input type="button" value="login" href="<?= ROOT ?>/students/studentsched"> Log in </a>
     </div>
   </form>
 </div>

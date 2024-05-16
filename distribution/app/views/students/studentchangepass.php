@@ -16,8 +16,8 @@
       <center><h2>Student I.D</h2>
       <h3>changable</h3>
       <div class ="nav">
-      <a class="box" href="<?= ROOT ?>/studentsched"><h1>Schedule</h1></a> <br>
-      <a class="box" href="<?= ROOT ?>/studentchangepass"><h1>Change Password</a></h1><br>
+      <a class="box" href="<?= ROOT ?>/students/studentsched"><h1>Schedule</h1></a> <br>
+      <a class="box" href="<?= ROOT ?>/students/studentchangepass"><h1>Change Password</a></h1><br>
       <a class="box" href="<?= ROOT ?>/home"><h1>Log out</a></h1></center> 
 </div>
    

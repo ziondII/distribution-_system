@@ -21,7 +21,7 @@
             Services
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="<?= ROOT ?>/studentlogin">Student Login</a></li>
+            <li><a class="dropdown-item" href="<?= ROOT ?>/students/studentlogin">Student Login</a></li>
             <li><a class="dropdown-item" href="<?= ROOT ?>/adminlogin">Admin</a></li>
             
           </ul>
