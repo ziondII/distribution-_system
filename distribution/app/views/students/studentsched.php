@@ -1,54 +1,10 @@
-<!DOCTYPE html>
-<html>
-  <head>
-
-    <title>Student Portal</title>
-    <meta name = "viewport" content="width=device-width, initial-scale-1">
-<link rel = "stylesheet" href = "<?=ROOT?>/assets/css/style.css">
-  </head>
-    <body {background-color: black;} > 
-<div class = "row">
+<?php include PATH . "partials/studentportal.php"?>
+<center><div class="card" style="width: 18rem;">
+  <img src="..." class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Schedule</h5>
     
-<div class = "leftsidebar">
-  <div class="leftsidebar2">
-  <center><h1> </h1></center>
-      <center><img src="assets/images/pfp.png" width="150px" height="150px"></center> <br>
-      <center><h2>Student I.D</h2>
-      <h3>changable</h3>
-      <div class ="nav">
-      <a class="box" href="<?= ROOT ?>/students/studentsched"><h1>Schedule</h1></a> <br>
-      <a class="box" href="<?= ROOT ?>/students/studentchangepass"><h1>Change Password</a></h1><br>
-      <a class="box" href="<?= ROOT ?>/home"><h1>Log out</a></h1></center> 
-</div>
-   
-
-</div>
-
-    <div class="maincontainer">
-        <div class = "top">
-        <div class = "first">bebop</div>  
-<div class = "second">
-bop
-
-</div>
-
-
-        </div>
-   <div class="center">
-  <h1></h1>
-  <div class = "schedule">
- <h1>here</h1>
-</div>
-</div>
-
-</div>
-
-<div class = "rightsidebar">
- 
-</div>
-</div>
-<div id= "footer">
-
-</div>
-    </body>
-    </html>
+    <a href="#" class="btn btn-primary">Print Schedule</a>
+  </div>
+</div></center>
+<?php include PATH . "partials/footer.php"?>

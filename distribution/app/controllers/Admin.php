@@ -13,18 +13,25 @@ class Admin extends Controller
           ]);
       
     }
-    public function adminsetup()
+    public function createstudent()
     {
       $x = new Student();
       $rows = $x->findAll();
-      $this->view('admin/adminsetup');
+      $this->view('admin/createstudent');
     }
    
-    public function course_setup()
+    public function studentrecord()
     {
       $x = new Student();
       $rows = $x->findAll();
-      $this->view('admin/course_setup');
+      $this->view('admin/studentrecord');
+    }
+
+    public function studentsearch()
+    {
+      $x = new Student();
+      $rows = $x->findAll();
+      $this->view('admin/studentsearch');
     }
     
 } 

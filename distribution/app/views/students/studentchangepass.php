@@ -1,60 +1,35 @@
-<!DOCTYPE html>
-<html>
-  <head>
-
-    <title>Student Portal</title>
-    <meta name = "viewport" content="width=device-width, initial-scale-1">
-<link rel = "stylesheet" href = "<?=ROOT?>/assets/css/style.css">
-  </head>
-    <body {background-color: black;} > 
-<div class = "row">
-    
-<div class = "leftsidebar">
-  <div class="leftsidebar2">
-  <center><h1> </h1></center>
-      <center><img src="assets/images/pfp.png" width="150px" height="150px"></center> <br>
-      <center><h2>Student I.D</h2>
-      <h3>changable</h3>
-      <div class ="nav">
-      <a class="box" href="<?= ROOT ?>/students/studentsched"><h1>Schedule</h1></a> <br>
-      <a class="box" href="<?= ROOT ?>/students/studentchangepass"><h1>Change Password</a></h1><br>
-      <a class="box" href="<?= ROOT ?>/home"><h1>Log out</a></h1></center> 
-</div>
-   
-
-</div>
-
-    <div class="maincontainer">
-   <div class="center">
-  <h1></h1>
-  <div class = "form">
-  <form>
-    <div class="inputbox">
-      <input type="text" name ="email" required="required">
-      <span>Email</span>
+<?php include PATH . "partials/studentportal.php"?>
+<div class = "container-sm">
+<div class="input-group">
+ <span class="input-group-text">Old Password</span>
+  <input type="text" aria-label="First name" class="form-control">
+</div><br>
+<div class="input-group">
+ <span class="input-group-text">New Password</span>
+  <input type="text" aria-label="First name" class="form-control">
+</div><br>
+<!-- Button trigger modal -->
+<div class = "nav justify-content-end">
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Save
+</button>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Are you sure you want to change password?</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
     </div>
-    <div class="inputbox">
-      <input type="text" name = "password" required="required">
-      <span>Old Password</span>
-    </div>
-    <div class="inputbox">
-      <input type="text" name = "password" required="required">
-      <span>New Password</span>
-    </div>
-    <button type="button" class="btn btn-outline-light">Save</button>
-    </div>
-  </form>
+  </div>
 </div>
 </div>
-
-</div>
-
-<div class = "rightsidebar">
- 
-</div>
-</div>
-<div id= "footer">
-
-</div>
-    </body>
-    </html>
+<?php include PATH . "partials/footer.php"?>

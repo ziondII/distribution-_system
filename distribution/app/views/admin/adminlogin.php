@@ -8,7 +8,7 @@
     <title><?=APP_NAME?></title>
 </head>
 <body>
-     <<center>
+     <center>
 <p class="lead">
 
 </p>
@@ -25,7 +25,7 @@
       <span>Password</span>
     </div>
     <div class="inputbox">
-     <a input type="button"  href="<?= ROOT ?>/admin/adminsetup"> Log in </a>
+     <a input type="button"  href="<?= ROOT ?>/admin/studentrecord"> Log in </a>
     </div>
   </form>
 </div>
