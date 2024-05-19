@@ -4,7 +4,7 @@ class Students extends Controller
 {
     public function index()
     {    
-  
+     
           $x = new Student();
           $rows = $x->findAll();
          
@@ -13,17 +13,18 @@ class Students extends Controller
           ]);
       
     }
+ 
     public function studentchangepass()
     {
       $x = new Student();
-      $rows = $x->findAll();
+      
       $this->view('students/studentchangepass');
     }
     
     public function studentsched()
     {
       $x = new Student();
-      $rows = $x->findAll();
+      
       $this->view('students/studentsched');
     }
 } 

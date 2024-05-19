@@ -14,7 +14,10 @@ class Database
         {
             $con = $this->connect();
             $stm = $con->prepare($query);
-
+            
+            var_dump($query);
+            var_dump($data);
+           
             $check = $stm->execute($data);
 
             if ($check) 
