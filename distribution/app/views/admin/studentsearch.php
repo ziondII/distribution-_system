@@ -53,18 +53,18 @@
                         <td><?= htmlspecialchars($student->email) ?></td>
                         <td><?= htmlspecialchars($student->password) ?></td>
                         <td><img width="50px" height="50px" src="<?= ROOT ?>/<?= htmlspecialchars($student->image) ?>" alt="Profile Image"></td>
-                        <td></td>
-                    </tr>
-                <?php } ?>
-            <?php } else { ?>
-                <tr>
-                    <td colspan="9">
-                        <h2>No records found.</h2>
-                    </td>
+                        <td>  <a href="<?= ROOT ?>/admin/editstudent/<?= htmlspecialchars($student->id) ?>" class="btn btn-warning">Edit</a></td>
                 </tr>
-            <?php } ?>
-        </tbody>
-    </table>
-</div>
+                          <?php } ?>
+                      <?php } else { ?>
+                          <tr>
+                              <td colspan="9">
+                                  <h2>No records found.</h2>
+                              </td>
+                          </tr>
+                      <?php } ?>
+                  </tbody>
+              </table>
+          </div>
 
 <?php include PATH . "partials/footer.php" ?>

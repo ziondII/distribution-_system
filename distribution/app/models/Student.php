@@ -10,24 +10,7 @@ class Student extends Model
         // Execute the query and return the result
         return $this->query($query);
     }
-    // working
-    // public function search($lastname, $section)
-    // {
-    //     $query = "SELECT * FROM $this->table WHERE 1=1";
-    //     $data = [];
 
-    //     if (!empty($lastname)) {
-    //         $query .= " AND lastname LIKE :lastname";
-    //         $data[':lastname'] = '%' . $lastname . '%';
-    //     }
-
-    //     if (!empty($section)) {
-    //         $query .= " AND yearsec LIKE :section";
-    //         $data[':section'] = '%' . $section . '%';
-    //     }
-
-    //     return $this->query($query, $data);
-    // }
     public function search($lastname, $section)
     {
         $query = "SELECT * FROM $this->table WHERE 1=1";
@@ -45,4 +28,28 @@ class Student extends Model
 
         return $this->query($query, $data);
     }
+
+    protected $table = 'students';
+
+    public function find($id)
+    {
+        $query = "SELECT * FROM {$this->table} WHERE id = :id";
+        return $this->query($query, [':id' => $id])[0] ?? null;
+    }
+    public function update($id, $data)
+    {
+        $keys = array_keys($data);
+        $query = "UPDATE $this->table SET ";
+
+        foreach ($keys as $key) {
+            $query .= "$key = :$key, ";
+        }
+
+        $query = rtrim($query, ', ');
+        $query .= " WHERE id = :id";
+        $data['id'] = $id;
+
+        $this->query($query, $data);
+    }
+ 
 }

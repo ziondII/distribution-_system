@@ -17,15 +17,15 @@
   <h1>WELCOME ADMIN</h1>
   <form>
     <div class="inputbox">
-      <input type="text" name = "email" required="required">
+      <input type="text" name = "email" required>
       <span>Email</span>
     </div>
     <div class="inputbox">
-      <input type="text" name = "password"required="required">
+      <input type="text" name = "password" required>
       <span>Password</span>
     </div>
     <div class="inputbox">
-     <a input type="button"  href="<?= ROOT ?>/admin/studentrecord"> Log in </a>
+     <a input type="submit"  href="<?= ROOT ?>/admin/studentrecord"> Log in </a>
     </div>
   </form>
 </div>
