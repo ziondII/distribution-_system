@@ -30,3 +30,17 @@ function get_select($key, $value)
 
   return "";
 }
+function search($name, $section)
+{
+    $query = "SELECT * FROM $this->table WHERE (LOWER(firstname) LIKE :name OR LOWER(lastname) LIKE :name) AND LOWER(yearsec) LIKE :section";
+    $params = [
+        'name' => '%' . strtolower($name) . '%',
+        'section' => '%' . strtolower($section) . '%'
+    ];
+    
+    // Debug: Remove or comment out these lines after verifying they are correct
+    // echo $query;
+    // print_r($params);
+    
+    return $this->query($query, $params);
+}

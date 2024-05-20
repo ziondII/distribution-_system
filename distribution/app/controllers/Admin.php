@@ -52,13 +52,43 @@ class Admin extends Controller
         'students' => $students
     ]);
     }
+//working
+    // public function studentsearch()
+    // {
+    //     $students = new Student();
 
+    //     $lastnameSearch = '';
+    //     $sectionSearch = '';
+    //     $rows = [];
+
+    //     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    //         $lastnameSearch = $_POST['lastnamesearch'] ?? '';
+    //         $sectionSearch = $_POST['sectionsearch'] ?? '';
+
+    //         $rows = $students->search($lastnameSearch, $sectionSearch);
+    //     }
+
+    //     $this->view('admin/studentsearch', [
+    //         'students' => $rows
+    //     ]);
+    // }
     public function studentsearch()
     {
-      $student = new Student();
-     
-      $this->view('admin/studentsearch');
+        $students = new Student();
+
+        $lastnameSearch = '';
+        $sectionSearch = '';
+        $rows = [];
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $lastnameSearch = $_POST['lastnamesearch'] ?? '';
+            $sectionSearch = $_POST['sectionsearch'] ?? '';
+
+            $rows = $students->search($lastnameSearch, $sectionSearch);
+        }
+
+        $this->view('admin/studentsearch', [
+            'students' => $rows
+        ]);
     }
-  
-    
 } 

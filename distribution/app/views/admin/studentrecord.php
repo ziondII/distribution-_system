@@ -1,55 +1,5 @@
 <?php include PATH . "partials/admin.php"?>
-<style>
-  .container{
-    height: auto;
-  }
-.container_2{
-    padding-top: 10px;
-    height: 500px;
-    overflow-x: auto;
-}
-thead{
-    position: sticky;
-    top: 0;
-    z-index: 1;
-}
-th {
-    background-color: #4CAF50;
-    color: white;
-}
-tbody {
-    display: block;
-    height: 400px; /* Adjust as needed */
-    overflow-y: auto;
-}
-thead, tbody tr {
-    display: table;
-    width: 100%;
-    table-layout: fixed;
-}
-tbody {
-            display: block;
-            max-height: 400px; /* Adjust as needed */
-            overflow-y: auto;
-            overflow-x: hidden;
-        }
-
-        thead, tbody tr {
-            display: table;
-            width: 100%;
-            table-layout: fixed;
-        }
-
-        tbody td {
-            overflow: hidden;
-            text-overflow: ellipsis; /* Ensure long text doesn't overflow */
-        }
-        th, td {
-            
-            padding: 8px;     
-        }
-       
-</style>
+<link rel = "stylesheet" href = "<?=ROOT?>/assets/css/studentrecord.css">
 <div class= "container">
     <div class ="container_2">
     <table class="table table-striped table-hover">
