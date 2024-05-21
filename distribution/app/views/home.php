@@ -1,72 +1,121 @@
 <?php include PATH . "partials/header.php"?>
 <link rel = "stylesheet" href = "<?=ROOT?>/assets/css/home.css">
-<div class="p-3 mb-2 bg-light-subtle text-light-emphasis">
-  <style>
-    /* body{
-      background-image: url("assets/images/horse.jpeg");
-    } */
-  h5{
-    color: white;
+<style>
+  .container-xxl{
+    background-color: whitesmoke;
+    height: 550px;
   }
-  p{
-    color: red;
+  /* .row{
+    background-color: black;
+    height: 550px;
+  } */
+  .conatainer2{
+    background-color: whitesmoke;
+    margin-top: 50px;
+    margin-bottom: 50px;
   }
-  .containerpic{
-    background-image: url("assets/images/horse.jpeg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding-bottom: 30%; 
-    padding-top: 10%;
-  }
-  </style>
-<body >
-<center><div class = "containerpic">
-<div id="carouselExampleCaptions" class="carousel slide">
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
-  </div>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="assets/images/pfp.png" class="d-block w-10" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Christian Cerezo</h5>
-        <p>the horseman of apocalypse</p>
-      </div>
+  .login-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  padding: 40px;
+  transform: translate(-50%, -50%);
+  background: white;
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0,0,0,.6);
+  border-radius: 10px;
+}
+
+.login-box h2 {
+  margin: 0 0 30px;
+  padding: 0;
+  color:black;
+  text-align: center;
+}
+
+.login-box .user-box {
+  position: relative;
+}
+
+.login-box .user-box input {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: black;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background: transparent;
+}
+.login-box .user-box label {
+  position: absolute;
+  top:0;
+  left: 0;
+  padding: 10px 0;
+  font-size: 16px;
+  color: black;
+  pointer-events: none;
+  transition: .5s;
+}
+
+.login-box .user-box input:focus ~ label,
+.login-box .user-box input:valid ~ label {
+  top: -20px;
+  left: 0;
+  color: black;
+  font-size: 12px;
+}
+
+.login-box form a {
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  color: black;
+  font-size: 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  overflow: hidden;
+  transition: .5s;
+  margin-top: 40px;
+  letter-spacing: 4px
+}
+</style>
+<body>
+<div class="container-xxl">
+    <div class="row">
+        <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0">
+            <div class="login-box">
+                <h2>Login</h2>
+                <form method="POST" action="<?= ROOT ?>/home/login">
+                    <label for="role">Services</label>
+                    <select name="role" class="form-select form-select-sm" aria-label="Small select example">
+                        <option value="student">Student</option>
+                        <option value="admin">Admin</option>
+                    </select><br>
+                    <div class="user-box">
+                        <label for="id"></label>
+                        <input name="id" type="text" required="" placeholder="ID">
+                    </div>
+                    <div class="user-box">
+                        <label for="password"></label>
+                        <input name="password" type="password" required="" placeholder="Password">
+                    </div>
+                    <div>
+                        <button type="submit" class="btn">Login</button>
+                    </div>
+                    <?php if (!empty($error)) : ?>
+                        <div class="alert alert-danger"><?= $error ?></div>
+                    <?php endif; ?>
+                </form>
+            </div>
+        </div>
     </div>
-    <div class="carousel-item">
-      <img src="assets/images/pfp.png" class="d-block w-10" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Eduardo Dizon</h5>
-        <p>the horseman of apocalypse</p>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img src="assets/images/mark.jpg" width="300x" height="300px" class="d-block w-10" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Mark Ortiz</h5>
-        <p>the horseman of apocalypse</p>
-      </div>
-  </div>
-  <div class="carousel-item">
-      <img src="assets/images/pfp.png"  class="d-block w-10" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Patric Ladrillano</h5>
-        <p>the horseman of apocalypse</p>
-</div>
-    </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
 </div>
 </body>
 
+
 <?php include PATH . "partials/footer.php"?>
+
+

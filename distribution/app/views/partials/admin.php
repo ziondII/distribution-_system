@@ -17,7 +17,7 @@
   <a class="nav-link" href="<?= ROOT ?>/admin/studentrecord">Student Record</a>
   <a class="nav-link" href="<?= ROOT ?>/admin/createstudent">Add Student</a>
   <a class="nav-link" href="<?= ROOT ?>/admin/studentsearch">Find Student</a>
-  <a class="nav-link " href="<?= ROOT ?>/admin/adminlogin">Log out</a>
+  <a class="nav-link " href="<?= ROOT ?>/home">Log out</a>
 </nav>
   </div>
 </nav>

@@ -24,28 +24,25 @@ class Model extends Database
 
   public function where($data, $data_not = [])
   {
-    $keys = array_keys($data);
-    $keys_not = array_keys($data_not);
+      $keys = array_keys($data);
+      $keys_not = array_keys($data_not);
 
-    $query = "select * from  $this->table where ";
+      $query = "SELECT * FROM $this->table WHERE ";
 
-    foreach ($keys as $key) {
-      $query .= $key . " = :" . $key . " && ";
-    }
+      foreach ($keys as $key) {
+          $query .= "$key = :$key AND ";
+      }
 
-    foreach ($keys_not as $key) {
-      $query .= $key . " != :" . $key . " && ";
-    }
+      foreach ($keys_not as $key) {
+          $query .= "$key != :$key AND ";
+      }
 
-    $query = trim($query, ' && ');
+      $query = rtrim($query, ' AND ');
 
-    $data = array_merge($data, $data_not);
-    $result = $this->query($query, $data);
+      $data = array_merge($data, $data_not);
+      $result = $this->query($query, $data);
 
-    if ($result) {
-      return $result;
-    }
-    return false;
+      return $result ? $result : false;
   }
 
   public function first($data, $data_not = [])

@@ -2,6 +2,7 @@
 
 class Student extends Model
 {
+    protected $table = 'students';
     public function findAll()
     {
         // SQL query to select all records from the students table
@@ -29,27 +30,33 @@ class Student extends Model
         return $this->query($query, $data);
     }
 
-    protected $table = 'students';
-
     public function find($id)
     {
         $query = "SELECT * FROM {$this->table} WHERE id = :id";
         return $this->query($query, [':id' => $id])[0] ?? null;
     }
-    public function update($id, $data)
+    public function where($data, $data_not = [])
     {
         $keys = array_keys($data);
-        $query = "UPDATE $this->table SET ";
+        $keys_not = array_keys($data_not);
+
+        $query = "SELECT * FROM $this->table WHERE ";
 
         foreach ($keys as $key) {
-            $query .= "$key = :$key, ";
+            $query .= "$key = :$key AND ";
         }
 
-        $query = rtrim($query, ', ');
-        $query .= " WHERE id = :id";
-        $data['id'] = $id;
+        foreach ($keys_not as $key) {
+            $query .= "$key != :$key AND ";
+        }
 
-        $this->query($query, $data);
+        $query = rtrim($query, ' AND ');
+
+        $data = array_merge($data, $data_not);
+        $result = $this->query($query, $data);
+
+        return $result ? $result : false;
     }
+
  
 }

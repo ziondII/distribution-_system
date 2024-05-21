@@ -8,8 +8,7 @@ class Admin extends Controller
       $student = new Student();
       $x = new Student();
       
-  
-      $this->view('admin/adminlogin');
+      $this->view('home');
     }
     public function createstudent()
       {
