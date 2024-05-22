@@ -6,7 +6,7 @@ class Students extends Controller
     {
         $x = new Student();
         $rows = $x->findAll();
-
+        
         $this->view('home', [
             'students' => $rows
         ]);
@@ -19,21 +19,21 @@ class Students extends Controller
 
     public function studentsched()
     {
-        // Ensure the user is logged in and has a student session
-        if (!isset($_SESSION['student_id'])) {
-            redirect('home/login');
-        }
+        if (isset($_SESSION['student_id'])) {
+            $studentModel = new Student();
+            $student = $studentModel->first(['id' => $_SESSION['student_id']]);
 
-        $studentModel = new Student();
-        $student = $studentModel->where(['id' => $_SESSION['student_id']]);
-
-        if ($student) {
-         
-            $this->view('students/studentsched', [
-                'student' => $student[0]
-            ]);
+            if ($student) {
+                $this->view('students/studentsched', [
+                    'student' => $student
+                ]);
+            } else {
+                header('Location: ' . ROOT . '/home');
+                exit;
+            }
         } else {
-            $this->view('home', ['error' => 'Student not found']);
+            header('Location: ' . ROOT . '/home');
+            exit;
         }
     }
 }
