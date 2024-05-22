@@ -2,7 +2,7 @@
 <link rel = "stylesheet" href = "<?=ROOT?>/assets/css/home.css">
 <style>
   .container-xxl{
-    background-color: whitesmoke;
+    
     height: 550px;
   }
   /* .row{
@@ -10,7 +10,7 @@
     height: 550px;
   } */
   .conatainer2{
-    background-color: whitesmoke;
+    background-color: transparent;
     margin-top: 50px;
     margin-bottom: 50px;
   }
@@ -21,7 +21,7 @@
   width: 400px;
   padding: 40px;
   transform: translate(-50%, -50%);
-  background: white;
+  background: transparent;
   box-sizing: border-box;
   box-shadow: 0 15px 25px rgba(0,0,0,.6);
   border-radius: 10px;
@@ -88,19 +88,30 @@
         <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0">
             <div class="login-box">
                 <h2>Login</h2>
-                <form method="POST" action="<?= ROOT ?>/login/login">
-                    <label for="role">Services</label>
-                    <select name="role" class="form-select form-select-sm" aria-label="Small select example">
-                        <option value="student">Student</option>
-                        <option value="admin">Admin</option>
-                    </select><br>
+                <form method="POST">
+                    <?php if (!empty($errors)): ?>
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <?php foreach ($errors as $error): ?>
+                            <?= $error . "<br>" ?>
+                        <?php endforeach; ?>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    <?php endif; ?>
+                    <br>
                     <div class="user-box">
-                        <label for="id"></label>
-                        <input name="id" type="text" required="" placeholder="ID">
+                        <label for="roles"></label>
+                        <select name="roles" class="form-select form-select-sm" aria-label="Small select example">
+                            <option value="student">Student</option>
+                            <option value="admin">Admin</option>
+                        </select>
                     </div>
                     <div class="user-box">
-                        <label for="password"></label>
-                        <input name="password" type="password" required="" placeholder="Password">
+                        <label for="Email"></label>
+                        <input type="text" name="email" value="<?= get_var('email') ?>" placeholder="Email" class="form-control">
+                    </div>
+                    <div class="user-box">
+                        <label for="Password"></label>
+                        <input type="password" name="password" required placeholder="Password">
                     </div>
                     <div>
                         <button type="submit" class="btn">Login</button>

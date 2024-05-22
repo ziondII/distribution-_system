@@ -18,11 +18,12 @@
 <div class="mb-3">
   <label for="" class="form-label">First Name</label>
   <input name="firstname" value="<?= get_var('firstname') ?>" type="text" class="form-control" id="formGroupExampleInput2" required>
-
-</div><div class="mb-3">
+</div>
+<div class="mb-3">
   <label for="" class="form-label">contact</label>
   <input name="contact" value="<?= get_var('contact') ?>" type="text" class="form-control" id="formGroupExampleInput2" placeholder=""required>
-</div><br></div>
+</div>
+</div>
 <div class="col-5"><div class="form-floating">
   <select name="course" class="form-select" id="floatingSelect" aria-label="Floating label select example" required>
   <option value=""></option>
@@ -46,6 +47,13 @@
 <div class="mb-3">
   <label for="" class="form-label">Input Schedule</label>
   <input name="image" class="form-control" type="file" id="formFile">
+</div>
+<div>
+<select name="roles" class="form-select" id="floatingSelect" aria-label="Floating label select example" required>
+  <option value=""></option>
+  <option  <?= get_select('roles', 'student') ?>>student</option>
+    <option <?= get_select('roles', 'admin') ?>>admin</option>
+  </select>
 </div>
 <div class = "nav justify-content-end">
 <!-- Button trigger modal -->

@@ -2,51 +2,63 @@
 
 class Login extends Controller
 {
-    public function index()
-    {
-        $this->view('login');
-    }
+  // public function index()
+  // {  
+    
+  //   $user = new Student();
 
-    public function login()
-    {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $role = $_POST['role'];
-            $id = $_POST['id'];
-            $password = md5($_POST['password']); // Assuming passwords are hashed with md5
+  //   if (count($_POST) > 0) {
 
-            if ($role == 'admin') {
-                $adminModel = new Admin();
-                $admin = $adminModel->where(['admin_id' => $id, 'password' => $password]);
-                if ($admin) {
-                    $_SESSION['admin_id'] = $admin[0]->admin_id;
-                    header('Location: ' . ROOT . '/admin/studentrecord');
-                    exit;
-                } else {
-                    $this->view('login', ['error' => 'Invalid ID or password']);
-                }
-            } elseif ($role == 'student') {
-                $studentModel = new Student();
-                $student = $studentModel->where(['id' => $id, 'password' => $password]);
-                if ($student) {
-                    $_SESSION['id'] = $student[0]->id;
-                    $_SESSION['firtstname'] = $student[0]->firstname . ' ' . $student[0]->lastname;
-                    header('Location: ' . ROOT . '/students/studentsched');
-                    exit;
-                } else {
-                    $this->view('login', ['error' => 'Invalid ID or password']);
-                }
-            } else {
-                $this->view('login', ['error' => 'Invalid role selected']);
-            }
+  //     $arr['email'] = $_POST['email'];
+
+  //     $row = $user->first($arr);
+
+  //     if ($row) {
+
+  //       if ($_POST['password'] == $row->password) {
+
+  //         Auth::authenticate($row);
+  //         redirect('admin/studentrecord');
+  //       } else {
+  //         $errors['errors'] = 'Email or Password is not valid.';
+  //       }
+  //     } else {
+  //       $errors['errors'] = 'Email or Password is not valid.';
+  //     }
+  //   }
+  //   $this->view('login');
+  // }
+  public function index()
+  {  
+    $errors = [];
+    
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+      $email = $_POST['email'];
+      $password = $_POST['password'];
+      $role = $_POST['roles'];
+      
+      $userModel = new Student();
+      $arr = ['email' => $email];
+      $row = $userModel->first($arr);
+
+      if ($row) {
+        if ($password == $row->password) {
+          Auth::authenticate($row);
+
+          if ($row->roles == 'admin') {
+            redirect('admin/studentrecord');
+          } else if ($row->roles == 'student') {
+            redirect('students/studentsched');
+          }
         } else {
-            $this->view('login');
+          $errors['login'] = 'Email or Password is not valid.';
         }
+      } else {
+        $errors['login'] = 'Email or Password is not valid.';
+      }
     }
 
-    public function logout()
-    {
-        session_destroy();
-        header('Location: ' . ROOT . '/home');
-        exit;
-    }
+    $this->view('login', ['errors' => $errors]);
+  }
+  
 }

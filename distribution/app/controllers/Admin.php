@@ -4,7 +4,9 @@ class Admin extends Controller
 {
     public function index()
     {    
-  
+      if (!Auth::logged_in()) {
+        redirect('login');
+      }
       $student = new Student();
       $x = new Student();
       
@@ -12,6 +14,9 @@ class Admin extends Controller
     }
     public function createstudent()
       {
+        if (!Auth::logged_in()) {
+          redirect('login');
+        }
         $students = new Student();
         if (count($_POST) > 0) {
    
@@ -40,16 +45,34 @@ class Admin extends Controller
       $this->view('admin/createstudent');
     }
    
+    // public function studentrecord()
+    // {
+    //   if (!Auth::logged_in()) {
+    //     redirect('login');
+    //   }
+    // $studentModel = new Student();
+  
+    // $students = $studentModel->findAll();
+     
+    // $this->view('admin/studentrecord', [
+    //     'students' => $students
+    // ]);
+    // }
+
     public function studentrecord()
     {
-
-    $studentModel = new Student();
-  
-    $students = $studentModel->findAll();
-     
-    $this->view('admin/studentrecord', [
-        'students' => $students
-    ]);
+      if (Auth::is_admin()) {
+        // Fetch student records and pass to the view
+        $studentModel = new Student();
+        $students = $studentModel->findAll();
+        
+        $this->view('admin/studentrecord', [
+          'students' => $students
+        ]);
+      } else {
+        header('Location: ' . ROOT . '/login');
+        exit;
+      }
     }
 
     public function studentsearch()
@@ -73,6 +96,9 @@ class Admin extends Controller
     }
     public function editstudent($id = null)
     {
+      if (!Auth::logged_in()) {
+        redirect('login');
+      }
         $studentModel = new Student();
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -99,6 +125,24 @@ class Admin extends Controller
                 'student' => $student
             ]);
         }
+    }
+    public function deletestudent($id)
+    {
+        if (!Auth::logged_in() || !Auth::is_admin()) {
+            redirect('login');
+        }
+
+        $studentModel = new Student();
+        $student = $studentModel->find($id);
+
+        if ($student) {
+            $studentModel->delete($id);
+            $_SESSION['success_message'] = 'Student record deleted successfully';
+        } else {
+            $_SESSION['error_message'] = 'Student record not found';
+        }
+
+        redirect('admin/studentrecord');
     }
  
 } 
